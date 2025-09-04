@@ -1,0 +1,184 @@
+
+:root{
+  --bg:#ffffff;
+  --panel:#f6f8ff;
+  --text:#10131a;
+  --muted:#5c677d;
+  --line:rgba(17,26,214,.14);
+  --accent:#4c6bff;
+  --accent2:#7f56ff;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
+
+.section{max-width:1180px;margin:0 auto;padding:54px 20px}
+h1{font-size:44px;line-height:1.15;margin:0 0 14px}
+h2{font-size:28px;margin:0 0 18px}
+h3{font-size:18px;margin:0 0 8px}
+p{margin:0 0 10px;color:var(--muted)}
+
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
+.site-header .wrap{display:flex;gap:16px;align-items:center;max-width:1180px;margin:0 auto;padding:10px 20px}
+.logo{font-weight:800}
+.navbar{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
+.navbar a{color:#1b2551;text-decoration:none}
+.navbar a:hover{color:var(--accent)}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;max-width:1180px;margin:20px auto 0;padding:0 20px;align-items:center}
+.hero .cta{display:flex;gap:12px;margin-top:12px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:#203; background:#fff}
+.btn.primary{background:linear-gradient(135deg,#4c6bff,#8a63ff);color:#fff;border:none}
+.hero-figure img{width:100%;max-width:560px;display:block;margin-left:auto;border-radius:18px;box-shadow:0 18px 40px rgba(32,40,90,.12)}
+
+.grid{display:grid;gap:22px}
+.grid.services{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1024px){ .grid.services{grid-template-columns:repeat(2,1fr)} .hero{grid-template-columns:1fr} .hero-figure img{margin:0 auto} }
+@media(max-width:640px){ .grid.services{grid-template-columns:1fr} }
+
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 16px 36px rgba(20,50,120,.06);text-align:center}
+.tile-img{width:100%;height:280px;object-fit:cover;border-radius:14px;display:block;margin-bottom:12px}
+.card .mcc{font-weight:800;letter-spacing:.02em;text-align:center;margin:4px 0 8px;color:#1b1f73}
+.card p{text-align:center}
+
+.grid.pricing{grid-template-columns:repeat(3,1fr)}
+.price-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 12px 32px rgba(20,50,120,.06)}
+.price-card.highlight{outline:2px solid #b7b4ff}
+.price{font-size:20px;font-weight:900;margin:8px 0 12px;color:#0f1e56}
+.list,.meta{margin:0 0 8px;padding-left:18px}
+.divider{height:1px;background:var(--line);margin:12px 0}
+.badge{display:inline-block;background:#eef2ff;border:1px solid #cdd5ff;padding:6px 10px;border-radius:999px;font-weight:700}
+.fineprint{color:var(--muted);margin-top:10px}
+
+.docs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.doc{display:block;background:#fff;border:1px solid var(--line);padding:12px;border-radius:10px}
+@media(max-width:680px){ .docs-grid{grid-template-columns:1fr} }
+
+.grid.cases{grid-template-columns:repeat(3,1fr)}
+.bubble{position:relative;background:linear-gradient(180deg,#0e0f22 0%, #1b1f3a 100%);color:#eef2ff;border-radius:18px;padding:18px;box-shadow:0 18px 32px rgba(34,20,120,.25)}
+.bubble:after{content:"";position:absolute;left:36px;bottom:-10px;width:20px;height:20px;background:linear-gradient(180deg,#0e0f22 0%, #1b1f3a 100%);transform:rotate(45deg)}
+.bubble h3{color:#fff}
+.bubble .result{color:#c8d1ff}
+@media (max-width:1000px){ .grid.cases{grid-template-columns:1fr} }
+
+.invoice{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:900px){ .grid.pricing{grid-template-columns:1fr} .invoice{grid-template-columns:1fr} }
+
+footer{border-top:1px solid var(--line);padding:18px;color:#5a647a;text-align:center;margin-top:30px}
+/* HOW WE WORK — исправление двойной нумерации */
+#work li {
+  position: relative;
+  list-style: none;       /* убираем обычную нумерацию */
+  margin: 16px 0;
+  font-size: 18px;
+  line-height: 1.4;
+  padding-left: 48px;
+}
+
+/* Скрываем цифры, которые вручную в HTML (1, 2, 3, 4) */
+#work li strong::before {
+  content: "";
+  display: none;
+}
+
+/* Генерируем новые фиолетовые кружки с цифрами */
+#work li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #6c2bd9;   /* фиолетовый */
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+}
+
+/* Сбрасываем счётчик */
+#work ol {
+  counter-reset: step;
+}
+/* Убираем лишние цифры из текста How we work */
+#work li {
+  list-style: none;
+  counter-increment: step;
+  position: relative;
+  margin: 16px 0;
+  padding-left: 48px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Прячем первые символы (1, 2, 3, 4) в начале текста */
+#work li::first-letter {
+  color: transparent;
+  font-size: 0;
+}
+
+/* Красивые фиолетовые кружки с цифрами */
+#work li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #6c2bd9;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+}
+
+#work ol {
+  counter-reset: step;
+}
+/* HOW WE WORK — фикс счётчика и скрытие лишней цифры в тексте */
+#work ol{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: hw 0;            /* старт счётчика */
+}
+
+#work li{
+  position: relative;
+  margin: 16px 0;
+  padding-left: 48px;
+  counter-increment: none !important;   /* ВАЖНО: отключаем лишний инкремент на li */
+}
+
+/* фиолетовый кружок с правильной нумерацией 1..4 */
+#work li::before{
+  counter-increment: hw;          /* инкрементим только тут */
+  content: counter(hw);
+  position: absolute;
+  left: 0; top: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #6c2bd9;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+}
+
+/* прячем первую «лишнюю» цифру, которая набрана прямо в тексте */
+#work li::first-letter{
+  color: transparent;
+  font-size: 0;
+}
+/* Case Studies — сделать описания ярче */
+.case-studies p {
+  color: #f5f5f5;   /* светло-серый вместо тусклого */
+  font-size: 16px;  /* чуть покрупнее для читаемости */
+  line-height: 1.5; /* удобнее читать */
+}
